@@ -158,6 +158,7 @@ def sudoku_solver(sudoku):
 for i in range(9):
   for j in range(9):
     print("WELCOME TO SUDOKU SOLVER!")
+    print("")
     print_grid(grid)
     grid[i][j] = int(input("Masukkan angka baris ke-"+str(i+1)+" kolom ke-"+str(j+1)+": "))
     os.system("cls")
