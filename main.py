@@ -1,18 +1,34 @@
+import time
+import os
 
 # Grid sudoku yang menjadi input
 grid = [
-  [3, 9, 0,   0, 5, 0,   0, 0, 0],
-  [0, 0, 0,   2, 0, 0,   0, 0, 5],
-  [0, 0, 0,   7, 1, 9,   0, 8, 0],
+  [0, 0, 0,   0, 0, 0,   0, 0, 0],
+  [0, 0, 0,   0, 0, 0,   0, 0, 0],
+  [0, 0, 0,   0, 0, 0,   0, 0, 0],
 
-  [0, 5, 0,   0, 6, 8,   0, 0, 0],
-  [2, 0, 6,   0, 0, 3,   0, 0, 0],
-  [0, 0, 0,   0, 0, 0,   0, 0, 4],
+  [0, 0, 0,   0, 0, 0,   0, 0, 0],
+  [0, 0, 0,   0, 9, 0,   0, 0, 0],
+  [0, 0, 0,   0, 0, 0,   0, 0, 0],
 
-  [5, 0, 0,   0, 0, 0,   0, 0, 0],
-  [6, 7, 0,   1, 0, 5,   0, 4, 0],
-  [1, 0, 9,   0, 0, 0,   2, 0, 0]
+  [0, 0, 0,   0, 0, 0,   0, 0, 0],
+  [0, 0, 0,   0, 0, 0,   0, 0, 0],
+  [0, 0, 0,   0, 0, 0,   0, 0, 0]
   ]
+
+# grid = [
+#  [2, 1, 9,   0, 4, 6,   0, 3, 0],
+#  [0, 0, 5,   1, 0, 0,   0, 0, 0],
+#  [0, 3, 4,   0, 0, 0,   2, 6, 0],
+
+#  [0, 2, 6,   0, 0, 7,   5, 0, 3],
+#  [0, 0, 0,   0, 9, 0,   0, 0, 7],
+#  [4, 7, 3,   0, 6, 5,   0, 0, 8],
+
+#  [0, 6, 0,   4, 0, 2,   3, 1, 0],
+#  [3, 4, 0,   0, 0, 0,   7, 8, 0],
+#  [1, 0, 0,   0, 0, 0,   4, 5, 0]
+#  ]
 
 # Fungsi untuk print grid
 # i = baris
@@ -20,53 +36,62 @@ grid = [
 
 def print_grid(sudoku):
   for i in range(0,3):
-
+   
     for j in range(0,3):
       print(sudoku[i][j], end=" ")
+      time.sleep(0.002)
     print("|", end=" ")
 
     for j in range(3, 6):
       print(sudoku[i][j], end=" ")
+      time.sleep(0.002)
     print("|", end=" ")
 
     for j in range(6, 9):
       print(sudoku[i][j], end=" ")
+      time.sleep(0.002)
     print(" ")
 
   print("---------------------")
 
   for i in range(3,6):
-
+   
     for j in range(0,3):
       print(sudoku[i][j], end=" ")
+      time.sleep(0.002)
     print("|", end=" ")
 
     for j in range(3, 6):
       print(sudoku[i][j], end=" ")
+      time.sleep(0.002)
     print("|", end=" ")
   
     for j in range(6, 9):
       print(sudoku[i][j], end=" ")
+      time.sleep(0.002)
     print(" ")
 
   print("---------------------")
 
   for i in range(6,9):
-
+    
     for j in range(0,3):
       print(sudoku[i][j], end=" ")
+      time.sleep(0.002)
     print("|", end=" ")
 
     for j in range(3, 6):
       print(sudoku[i][j], end=" ")
+      time.sleep(0.002)
     print("|", end=" ")
   
     for j in range(6, 9):
       print(sudoku[i][j], end=" ")
+      time.sleep(0.002)
     print(" ")
 
 # Langkah 1 : Mencari grid yang kosong
-def empty_grid(sudoku) :
+def cari_kosong(sudoku) :
 
   for i in range(9):
     for j in range(9):
@@ -97,7 +122,7 @@ def cek_input(sudoku, iterasi, baris, kolom):
 
   for i in range(i_awal, i_awal+3):
     for j in range(j_awal, j_awal+3):
-      if sudoku[i][j] == iterasi:
+      if iterasi == sudoku[i][j]:
         return False
   
   return True # Input tervalidasi sebagai solusi
@@ -106,14 +131,14 @@ def cek_input(sudoku, iterasi, baris, kolom):
 def sudoku_solver(sudoku):
 
   # Memasukkkan input untuk menyelesaikan grid sudoku yang kosong
-  baris, kolom = empty_grid(sudoku)
+  baris, kolom = cari_kosong(sudoku) # f(x), x bisa apa saja, sudoku bisa apa saja
 
-  # Apabila sudoku selesai, logika di bawah akan True saat empty_grid me-return None
+  # Apabila sudoku selesai, logika di bawah akan True saat cari_kosong me-return None
   if kolom is None:
     return True
   
   # Apabila masih ada grid yang kosong, maka dilakukan iterasi untuk menebak setiap solusi sudoku yang mungkin
-  for iterasi in range(1,10):
+  for iterasi in range(0,10):
     
     # Apabila iter nya merupakan solusi, grid diganti dengan nilai iter
     if cek_input(sudoku, iterasi, baris, kolom):
@@ -129,4 +154,20 @@ def sudoku_solver(sudoku):
   # Apabila tidak ada solusi
   return False
 
-print(print_grid(grid))
+
+for i in range(9):
+  for j in range(9):
+    print("WELCOME TO SUDOKU SOLVER!")
+    print_grid(grid)
+    grid[i][j] = int(input("Masukkan angka baris ke-"+str(i+1)+" kolom ke-"+str(j+1)+": "))
+    os.system("cls")
+
+
+def print_sol():
+  input("Tekan Enter untuk mencetak solusi!")
+  os.system("cls")
+  sudoku_solver(grid)
+  print("Solution:")
+  print_grid(grid)
+
+print_sol()
