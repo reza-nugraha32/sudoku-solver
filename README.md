@@ -10,4 +10,4 @@ Group 2
 - Ganesh Ghindwani
 - Mariatus Sururiyah
 - Rachma Afiah
-- Reza Nugraha (16421374)
+- Reza Nugraha
