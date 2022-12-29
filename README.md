@@ -1,13 +1,6 @@
-# Sudoku_TubesPengkom
-Repository of Python-based sudoku solver as part of a project for KU1102 Introduction to Computation course.
+# Sudoku Solver
+Repository of Python-based sudoku solver as part of a project for KU1102 Introduction to Computation course. <br>
 
-This program uses backtracking and recursion algorithm to solve the Sudoku puzzle.
+This program uses backtracking and recursion algorithm to solve the Sudoku puzzle. <br>
 
-Tugas Besar Pengenalan Komputasi
-KU1102
-Group 2
-- Joeang Al Islami
-- Ganesh Ghindwani
-- Mariatus Sururiyah
-- Rachma Afiah
 - Reza Nugraha
